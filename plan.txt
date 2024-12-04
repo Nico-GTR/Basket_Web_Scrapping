@@ -1,0 +1,40 @@
+		******MENU******
+
+1) - Données équipes (saison en cours)
+
+liste des joueurs
+Classement
+Per Game Stats
+Assistant Coaches and Staff
+Conférence de la team et division
+Arena
+Record: 
+Last Game: 
+Next Game: 
+
+Salaries
+2) - Données joueurs 
+
+Listes des joueurs :
+Stephen Curry
+Lebron James 
+Derrick Rose
+Kevin Durant
+Kawhi Leonard
+Kobe Bryant
+Micheal Jordan
+Tony Parker
+Shaquille O'Neal
+Donnovan Mitchell
+
+Infos :
+
+Per game (games, FT% , 3pts, 2pts, 2pts%, 3pts%, ft, TRB, assist,pts)
+Graphique (x : année, y:points) 
+Tableau gris (17yrs) : (games, FT% , 3pts, 2pts, 2pts%, 3pts%, ft, TRB, assist,pts)
+Game highs 
+Graphique pour voir l'évolution du salaire
+Graph (forme terrain de basket) avec la fonction Shot Charts 
+
+
+3) - Exit

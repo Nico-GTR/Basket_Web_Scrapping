@@ -1,0 +1,43 @@
+boucle get_roster(team,2024-2025) pour la liste des joueurs
+boucle get_team_stats(team, 2025, 'PER_GAME') pour per game stat
+get_team_ratings(2025, team=[]) pour conf et div et classement
+get_team_misc(team, 2025) pour Arena 	
+record, next game, last game, salaries, Assistant Coaches and Staff :::::> à coder car pas dans l'API
+
+Abréviations équipes : 
+
+Est :
+
+    Cleveland Cavaliers - CLE
+    Boston Celtics - BOS
+    Orlando Magic - ORL
+    New York Knicks - NYK
+    Milwaukee Bucks - MIL
+    Atlanta Hawks - ATL
+    Miami Heat - MIA
+    Chicago Bulls - CHI
+    Brooklyn Nets - BRK
+    Indiana Pacers - IND
+    Detroit Pistons - DET
+    Toronto Raptors - TOR
+    Charlotte Hornets (2014-Present) - CHO
+    Philadelphia 76ers - PHI
+    Washington Wizards - WAS
+
+Ouest :
+
+    Oklahoma City Thunder - OKC
+    Houston Rockets - HOU
+    Dallas Mavericks - DAL
+    Memphis Grizzlies - MEM
+    Los Angeles Clippers - LAC
+    Phoenix Suns - PHO
+    Golden State Warriors - GSW
+    Denver Nuggets - DEN
+    Los Angeles Lakers - LAL
+    San Antonio Spurs - SAS
+    Minnesota Timberwolves - MIN
+    Sacramento Kings - SAC
+    Portland Trail Blazers - POR
+    Utah Jazz - UTA
+    New Orleans Pelicans - NOP
