@@ -1,0 +1,99 @@
+###############################################
+                    Dossiers
+###############################################
+
+- Roster (Numéro,Joueur,Poste,Taille (ft),Poids (lbs),Date de naissance,Nationalité,Expérience,Université)
+- Stats (Rang,Joueur,Âge,Poste,Matchs,3 points,3 points %,2 points,2 points %,Lancer franc,Lancer franc %,Rebonds,Passes décisives,Points)
+- Salaires (Rang,Joueur,Salaire)
+- Infos de base (stade, classement, conférence, division, pourcentage de victoires, record, match précédent, prochain match, coach)
+
+
+Que des fichiers .csv
+Je vais fusionner tous les fichiers avec une seul ligne dans un seul csv. Tous ceux des dossiers : Stats équipe, Stade, Infos basiques.
+
+
+
+###############################################
+                Annexe
+###############################################
+
+
+Abréviations équipes : 
+
+Est :
+
+    Cleveland Cavaliers - CLE
+    Boston Celtics - BOS
+    Orlando Magic - ORL
+    New York Knicks - NYK
+    Milwaukee Bucks - MIL
+    Atlanta Hawks - ATL
+    Miami Heat - MIA
+    Chicago Bulls - CHI
+    Brooklyn Nets - BRK
+    Indiana Pacers - IND
+    Detroit Pistons - DET
+    Toronto Raptors - TOR
+    Charlotte Hornets (2014-Present) - CHO
+    Philadelphia 76ers - PHI
+    Washington Wizards - WAS
+
+Ouest :
+
+    Oklahoma City Thunder - OKC
+    Houston Rockets - HOU
+    Dallas Mavericks - DAL
+    Memphis Grizzlies - MEM
+    Los Angeles Clippers - LAC
+    Phoenix Suns - PHO
+    Golden State Warriors - GSW
+    Denver Nuggets - DEN
+    Los Angeles Lakers - LAL
+    San Antonio Spurs - SAS
+    Minnesota Timberwolves - MIN
+    Sacramento Kings - SAC
+    Portland Trail Blazers - POR
+    Utah Jazz - UTA
+    New Orleans Pelicans - NOP
+
+
+    Conférences
+
+    E : Eastern Conference (Conférence Est)
+    W : Western Conference (Conférence Ouest)
+
+Divisions
+
+Chaque conférence est divisée en trois divisions :
+Eastern Conference (E) :
+
+    A : Atlantic Division
+        Équipes typiques : Boston Celtics, Brooklyn Nets, New York Knicks, Philadelphia 76ers, Toronto Raptors.
+
+    C : Central Division
+        Équipes typiques : Chicago Bulls, Cleveland Cavaliers, Detroit Pistons, Indiana Pacers, Milwaukee Bucks.
+
+    SE : Southeast Division
+        Équipes typiques : Atlanta Hawks, Charlotte Hornets, Miami Heat, Orlando Magic, Washington Wizards.
+
+Western Conference (W) :
+
+    NW : Northwest Division
+        Équipes typiques : Denver Nuggets, Minnesota Timberwolves, Oklahoma City Thunder, Portland Trail Blazers, Utah Jazz.
+
+    P : Pacific Division
+        Équipes typiques : Golden State Warriors, Los Angeles Clippers, Los Angeles Lakers, Phoenix Suns, Sacramento Kings.
+
+    SW : Southwest Division
+        Équipes typiques : Dallas Mavericks, Houston Rockets, Memphis Grizzlies, New Orleans Pelicans, San Antonio Spurs.
+
+Résumé des acronymes
+
+    A : Atlantic
+    C : Central
+    SE : Southeast
+    NW : Northwest
+    P : Pacific
+    SW : Southwest
+    E : Eastern Conference
+    W : Western Conference
