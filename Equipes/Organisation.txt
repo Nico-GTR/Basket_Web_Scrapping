@@ -5,7 +5,8 @@
 - Roster (Numéro,Joueur,Poste,Taille (ft),Poids (lbs),Date de naissance,Nationalité,Expérience,Université)
 - Stats (Rang,Joueur,Âge,Poste,Matchs,3 points,3 points %,2 points,2 points %,Lancer franc,Lancer franc %,Rebonds,Passes décisives,Points)
 - Salaires (Rang,Joueur,Salaire)
-- Infos de base (stade, classement, conférence, division, pourcentage de victoires, record, match précédent, prochain match, coach)
+- Infos_equipe (stade, classement, conférence, division, pourcentage de victoires, record, match précédent, prochain match, coach)
+- logo_equipe (logo de chaque équipe en jpg)
 
 
 Que des fichiers .csv
