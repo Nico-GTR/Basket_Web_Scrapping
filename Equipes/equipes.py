@@ -7,6 +7,8 @@ Created on Wed Dec  4 13:31:53 2024
 
 import time
 import re
+import requests
+import os
 from basketball_reference_scraper.teams import get_roster, get_team_ratings, get_team_misc
 from basketball_reference_scraper.request_utils import get_wrapper
 import pandas as pd
@@ -58,6 +60,8 @@ def obtenir_stats_equipe(team):
     # Nettoyage éventuel (supprimer lignes/colonnes inutiles)
     df = df.dropna(how='all')  # Supprimer les lignes entièrement vides
     df = df.loc[:, ~df.columns.str.contains('^Unnamed')]  # Supprimer les colonnes sans nom
+    df["Rk"] = df["Rk"].fillna(0).astype(int)  # Conversion du rang en entier
+    df["Age"] = df["Age"].fillna(0).astype(int)  # Conversion de l'âge en entier
 
     return df
 
@@ -195,17 +199,21 @@ def fusion_df(team):
     arene_df = arene_df[["ARENA"]]  # Colonne à garder
     # Traduction du nom de la colonne en français
     arene_df.columns = ["Stade"]
+    arene_df.index = [0]  # Réinitialisation de l'index
 
     # Informations de l'équipe en lien avec la ligue:
     infos_ligue_equipe_df = get_team_ratings(2025, team)
     infos_ligue_equipe_df = infos_ligue_equipe_df[["RK", "CONF", "DIV", "W/L%"]]  # Colonnes à garder
     # Traduction des noms des colonnes en français
     infos_ligue_equipe_df.columns = ["Classement", "Conférence", "Division", "Pourcentage de victoires"]
+    infos_ligue_equipe_df["Classement"] = infos_ligue_equipe_df["Classement"].fillna(0).astype(int)  # Conversion du classement en entier
+    infos_ligue_equipe_df.index = [0]  # Réinitialisation de l'index
 
     # Informations de base de l'équipe :
     infos_base_equipe_df = infos_basiques_equipe(team)
     # Traduction des noms des colonnes en français
     infos_base_equipe_df.columns = ["Record", "Match précédent", "Prochain match", "Coach"]
+    infos_base_equipe_df.index = [0]  # Réinitialisation de l'index
 
     df_final = pd.concat([arene_df, infos_ligue_equipe_df, infos_base_equipe_df], axis=1)
 
@@ -224,6 +232,7 @@ for equipe in liste_equipes:
     df = get_roster(equipe, 2025)
     # Traduction des noms des colonnes en français
     df.columns = ["Numéro", "Joueur", "Poste", "Taille (ft)", "Poids (lbs)", "Date de naissance", "Nationalité", "Expérience", "Université"]
+    df["Numéro"] = df["Numéro"].fillna(0).astype(int)  # Conversion du numéro en entier
     df.to_csv(f"roster_{equipe}.csv", index=False)
    
 
@@ -245,28 +254,11 @@ for equipe in liste_equipes:
 for equipe in liste_equipes:
     df = fusion_df(equipe)
     df.to_csv(f"infos_equipe_{equipe}.csv", index=False)
+    
 
-
-
-## Création d'un df pour la conférence, la division et le classement
-## https://www.basketball-reference.com/leagues/NBA_2025_ratings.html
-#for equipe in liste_equipes:
-#    df = get_team_ratings(2025, equipe)
-#    df = df[["RK", "CONF", "DIV", "W/L%"]]  # Colonnes à garder
-#    # Traduction des noms des colonnes en français
-#    df.columns = ["Classement", "Conférence", "Division", "Pourcentage de victoires"]
-#    df.to_csv(f"infos_base_{equipe}.csv", index=False)
-## Création d'un df pour le stade de l'équipe
-#for equipe in liste_equipes:
-#    serie = get_team_misc(equipe, 2025)
-#    arene_df = serie.to_frame().T  # Transformation de la série en df
-#    arene_df = arene_df[["ARENA"]]  # Colonne à garder
-#    # Traduction du nom de la colonne en français
-#    arene_df.columns = ["Stade"]
-#    arene_df.to_csv(f"stade_{equipe}.csv", index=False)
-## Création d'un df avec les infos de base des équipes (Record, Match précédent, Prochain match, Coach)
-#for equipe in liste_equipes:
-#    df = infos_basiques_equipe(equipe)
-#    # Traduction des noms des colonnes en français :
-#    df.columns = ["Record", "Match précédent", "Prochain match", "Coach"]
-#    df.to_csv(f"infos_basiques_{equipe}.csv", index=False)
+os.mkdir("logo_equipe")
+for equipe in liste_equipes:
+    image_url = f"https://cdn.ssref.net/req/202411271/tlogo/bbr/{equipe}-2025.png"
+    img_data = requests.get(image_url).content
+    with open(f'logo_equipe\{equipe}.jpg', "wb") as handler:
+        handler.write(img_data)
