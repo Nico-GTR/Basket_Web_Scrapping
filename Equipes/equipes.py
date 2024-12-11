@@ -238,7 +238,8 @@ liste_equipes = [
 #####################################################################################################
 #                  Création de plusieurs DataFrame pour chaque équipe de la liste                   #
 #####################################################################################################
-
+# /!\ Le programme réalisant de nombreuse requête vers le site "https://www.basketball-reference.com/", il y a un risque que ce dernier bloque la récolte de données.
+# Si cela arrive, il faudra attendre entre 1h et 2h et modifier le code pour garder uniquement la création des DataFrame inexistant. Cette méthode est la seule solution à ce problème.
 
 # DataFrame pour le roster de l'équipe :
 for equipe in liste_equipes:
