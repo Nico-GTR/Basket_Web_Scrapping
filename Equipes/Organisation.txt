@@ -6,11 +6,7 @@
 - Stats (Rang,Joueur,Âge,Poste,Matchs,3 points,3 points %,2 points,2 points %,Lancer franc,Lancer franc %,Rebonds,Passes décisives,Points)
 - Salaires (Rang,Joueur,Salaire)
 - Infos de base (stade, classement, conférence, division, pourcentage de victoires, record, match précédent, prochain match, coach)
-
-
-Que des fichiers .csv
-Je vais fusionner tous les fichiers avec une seul ligne dans un seul csv. Tous ceux des dossiers : Stats équipe, Stade, Infos basiques.
-
+- Logos (Logo de l'équipe)
 
 
 ###############################################
