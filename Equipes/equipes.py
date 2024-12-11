@@ -239,44 +239,97 @@ liste_equipes = [
 #                  Création de plusieurs DataFrame pour chaque équipe de la liste                   #
 #####################################################################################################
 
-# Création de dossiers pour stocker les fichiers .csv et les logos des équipes :
-os.mkdir("Roster")  # Dossier pour les roster des équipes :
-os.mkdir("Stats")  # Dossier pour les statistiques des équipes :
-os.mkdir("Salaires")  # Dossier pour les salaires des joueurs des équipes :
-os.mkdir("Infos")  # Dossier pour les informations de base des équipes :
-os.mkdir("Logos")  # Dossier pour les logos des équipes :
-
 
 # DataFrame pour le roster de l'équipe :
 for equipe in liste_equipes:
-    df = get_roster(equipe, 2025)
-    df.columns = ["Numéro", "Joueur", "Poste", "Taille (ft)", "Poids (lbs)", "Date de naissance", "Nationalité", "Expérience", "Université"]  # Traduction du nom des colonnes en français.
-    df["Numéro"] = df["Numéro"].fillna(0).astype(int)  # Conversion du type du numéro en entier.
-    df.to_csv(f"Roster\roster_{equipe}.csv", index=False)  # Enregistrement du DataFrame dans un fichier .csv.
+    print("test")
+    # Chemin du fichier .csv :
+    chemin_roster = os.path.join("Roster", f"roster_{equipe}.csv")  # Utilisation de la fonction os.path.join pour gérer les chemins de fichiers de manière portable.
+
+    # Vérification de l'existence du fichier .csv :
+    if os.path.exists(chemin_roster):
+        print(f"Le fichier 'roster_{equipe}.csv' est déjà téléchargé.")
+    else:
+        print(f"Téléchargement du roster de l'équipe {equipe}...")
+        df = get_roster(equipe, 2025)
+        df.columns = ["Numéro", "Joueur", "Poste", "Taille (ft)", "Poids (lbs)", "Date de naissance", "Nationalité", "Expérience", "Université"]  # Traduction du nom des colonnes en français.
+        df["Numéro"] = df["Numéro"].fillna(0).astype(int)  # Conversion du type du numéro en entier.
+
+        # Création du dossier "Roster" si inexistant et enregistrement du DataFrame dans un fichier .csv :
+        os.makedirs("Roster", exist_ok=True)
+        df.to_csv(chemin_roster, index=False)
    
 
 # DataFrame pour les statistiques par match et par joueur de l'équipe :
 for equipe in liste_equipes:
-    df = obtenir_stats_equipe(equipe)
-    df = df[["Rk", "Player", "Age", "Pos", "G", "3P", "3P%", "2P", "2P%", "FT", "FT%", "TRB", "AST", "PTS"]]  # Conservation des colonnes pertinentes.
-    df.columns = ["Rang", "Joueur", "Âge", "Poste", "Matchs", "3 points", "3 points %", "2 points", "2 points %", "Lancer franc", "Lancer franc %", "Rebonds", "Passes décisives", "Points"]  # Traduction du nom des colonnes en français.
-    df.to_csv(f"Stats\stats_{equipe}.csv", index=False)  # Enregistrement du DataFrame dans un fichier .csv.
+    # Chemin du fichier .csv :
+    chemin_stats = os.path.join("Stats", f"stats_{equipe}.csv")
+
+    # Vérification de l'existence du fichier .csv :
+    if os.path.exists(chemin_stats):
+        print(f"Le fichier 'stats_{equipe}.csv' est déjà téléchargé.")
+    else:
+        print(f"Téléchargement des statistiques de l'équipe {equipe}...")
+        df = obtenir_stats_equipe(equipe)
+        df = df[["Rk", "Player", "Age", "Pos", "G", "3P", "3P%", "2P", "2P%", "FT", "FT%", "TRB", "AST", "PTS"]]  # Conservation des colonnes pertinentes.
+        df.columns = ["Rang", "Joueur", "Âge", "Poste", "Matchs", "3 points", "3 points %", "2 points", "2 points %", "Lancer franc", "Lancer franc %", "Rebonds", "Passes décisives", "Points"]  # Traduction du nom des colonnes en français.
+
+        # Création du dossier "Stats" si inexistant et enregistrement du DataFrame dans un fichier .csv :
+        os.makedirs("Stats", exist_ok=True)
+        df.to_csv(chemin_stats, index=False)
 
 
-# Dataframe pour le salaire des joueurs de l'équipe :
+# DataFrame pour le salaire des joueurs de l'équipe :
 for equipe in liste_equipes:
-    df = salaires_equipe(equipe)
-    df.to_csv(f"Salaires\salaires_{equipe}.csv", index=False)  # Enregistrement du DataFrame dans un fichier .csv.
+    # Chemin du fichier .csv :
+    chemin_salaires = os.path.join("Salaires", f"salaires_{equipe}.csv")
+
+    # Vérification de l'existence du fichier .csv :
+    if os.path.exists(chemin_salaires):
+        print(f"Le fichier 'salaires_{equipe}.csv' est déjà téléchargé.")
+    else:
+        print(f"Téléchargement des salaires de l'équipe {equipe}...")
+        df = salaires_equipe(equipe)
+
+        # Création du dossier "Salaires" si inexistant et enregistrement du DataFrame dans un fichier .csv :
+        os.makedirs("Salaires", exist_ok=True)
+        df.to_csv(chemin_salaires, index=False)
+
 
 # DataFrame pour les informations de base de l'équipe :
 for equipe in liste_equipes:
-    df = fusion_df(equipe)
-    df.to_csv(f"Infos\infos_equipe_{equipe}.csv", index=False)  # Enregistrement du DataFrame dans un fichier .csv.
+    # Chemin du fichier .csv :
+    chemin_infos = os.path.join("Infos", f"infos_equipe_{equipe}.csv")
+
+    # Vérification de l'existence du fichier .csv :
+    if os.path.exists(chemin_infos):
+        print(f"Le fichier 'infos_equipe_{equipe}.csv' est déjà téléchargé.")
+    else:
+        print(f"Téléchargement des informations de l'équipe {equipe}...")
+        df = fusion_df(equipe)
+
+        # Création du dossier "Infos" si inexistant et enregistrement du DataFrame dans un fichier .csv :
+        os.makedirs("Infos", exist_ok=True)
+        df.to_csv(chemin_infos, index=False)
 
 
 # Téléchargement des logos des équipes :
 for equipe in liste_equipes:
-    image_url = f"https://cdn.ssref.net/req/202411271/tlogo/bbr/{equipe}-2025.png"
-    img_data = requests.get(image_url).content  # Récupération des données de l'image.
-    with open(f'Logos\{equipe}.jpg', "wb") as handler:  # Enregistrement de l'image dans un fichier .jpg.
-        handler.write(img_data)
+    # Chemin du fichier logo :
+    chemin_logo = os.path.join("Logos", f"{equipe}.jpg")
+
+    # Vérification de l'existence du fichier logo :
+    if os.path.exists(chemin_logo):
+        print(f"Le logo de l'équipe {equipe} est déjà téléchargé.")
+    else:
+        print(f"Téléchargement du logo de l'équipe {equipe}...")
+        image_url = f"https://cdn.ssref.net/req/202411271/tlogo/bbr/{equipe}-2025.png"
+        img_data = requests.get(image_url).content  # Récupération des données de l'image.
+
+        # Création du dossier "Logos" si inexistant et enregistrement de l'image dans un fichier .jpg :
+        os.makedirs("Logos", exist_ok=True)
+        with open(chemin_logo, "wb") as handler:
+            handler.write(img_data)
+
+# Message de fin de téléchargement :
+print("\nTéléchargement terminé !\n==========================================================\nLes fichiers sont enregistrés dans les dossiers suivants :\n\n- Roster\n- Stats\n- Salaires\n- Infos\n- Logos.")
