@@ -1,0 +1,121 @@
+/* Reset and Base Styles */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Arial', 'Helvetica', sans-serif;
+    background-color: #f4f7f6;
+    color: #333;
+    line-height: 1.6;
+    margin: 0 20px; /* Ajout d'une marge égale à gauche et à droite pour le corps */
+}
+
+.container {
+    max-width: 1200px; /* Augmenter la largeur maximale du conteneur */
+    margin: 0 auto;
+    padding: 20px;
+    display: flex;
+    flex-direction: column;
+    align-items: center; /* Centrer tout le contenu verticalement */
+}
+
+/* Photo du joueur */
+.photo-section {
+    margin: 20px 0;
+}
+
+.player-photo {
+    max-width: 300px;
+    height: auto;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    display: block;
+    margin: 0 auto;
+}
+
+/* Informations générales */
+.info-section {
+    text-align: center; /* Centrer le texte de la section info */
+    margin-bottom: 20px;
+}
+
+.info-section h2 {
+    font-size: 2rem;
+    color: #1d428a;
+    margin-bottom: 10px;
+}
+
+/* Tables des données */
+.data-section {
+    margin: 30px auto; /* Même marge à gauche et à droite */
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center; /* Centrer les tableaux dans la section */
+}
+
+.data-section h2 {
+    font-size: 1.5rem;
+    color: #1d428a;
+    margin-bottom: 15px;
+}
+
+.data-table {
+    width: 100%; /* Permet au tableau d'utiliser toute la largeur disponible */
+    max-width: 1100px; /* Limite la largeur maximale pour un affichage agréable */
+    margin: 0 auto; /* Centrer le tableau */
+    border-collapse: collapse;
+    background-color: white;
+    font-size: 1rem;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+.data-table thead {
+    background-color: #1d428a;
+    color: white;
+}
+
+.data-table th,
+.data-table td {
+    padding: 10px;
+    border: 1px solid #e0e0e0;
+    text-align: center;
+}
+
+.data-table tbody tr:nth-child(even) {
+    background-color: #f9f9f9;
+}
+
+.data-table tbody tr:hover {
+    background-color: #f1f1f1;
+    transition: background-color 0.3s ease;
+}
+
+/* Graphiques et images */
+.graph-image, .result-image {
+    max-width: 100%;
+    height: auto;
+    margin: 20px auto; /* Centrer les graphiques */
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+/* Responsive Design */
+@media screen and (max-width: 768px) {
+    body {
+        font-size: 0.9rem;
+    }
+
+    .player-photo {
+        max-width: 200px;
+    }
+
+    .data-table {
+        font-size: 0.85rem;
+    }
+
+    .data-section h2 {
+        font-size: 1.2rem;
+    }
+}
