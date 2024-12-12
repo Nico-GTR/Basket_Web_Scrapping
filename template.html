@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>NBA Teams and Players</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body class="body-bg">
+
+    <!-- Titre principal -->
+    <h1 class="main-title">Equipes / Joueurs NBA</h1>
+
+    <!-- Section des équipes NBA -->
+    <section class="section">
+        <h2 class="section-title">Les 30 équipes NBA</h2>
+        
+        <!-- Grille des équipes -->
+        <div class="grid-container">
+            {% for team in teams %}
+            <div class="team">
+				<a href="Pages_Equipes/{{ team.logo_title }}.html">
+					<img class="team-logo" src="{{ team.logo }}" alt="{{ team.logo_title }} logo" title="{{ team.logo_title }}">
+					<div class="team-name">{{ team.logo_title }}</div>
+				</a>
+			</div>
+
+            {% endfor %}
+        </div>
+    </section>
+
+    <!-- Section des joueurs NBA -->
+    <section>
+        <h2 class="section-title">Les 10 joueurs NBA</h2>
+
+        <!-- Grille des joueurs : 2 lignes de 5 joueurs -->
+        <div class="grid-container grid-players">
+            {% for player in players %}
+            <div class="player">
+                <img class="player-headshot" src="{{ player.headshot_url }}" alt="{{ player.name }} headshot" title="{{ player.name }}">
+                <div class="player-name">{{ player.name }}</div>
+            </div>
+            {% endfor %}
+        </div>
+    </section>
+
+</body>
+</html>

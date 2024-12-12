@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{{ player_name }}</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="container">
+        <!-- Photo du joueur -->
+        <div class="photo-section">
+            <img src="{{ photo }}" alt="Photo de {{ player_name }}" class="player-photo">
+        </div>
+
+        <!-- Informations générales -->
+        <div class="info-section">
+            <h2>{{ player_name }}</h2>
+        </div>
+
+        <!-- Statistiques -->
+        <section class="data-section">
+            <h2>Statistiques</h2>
+            <table class="data-table">
+                <thead>
+                    <tr>
+                        {% for col in stats[0].keys() %}
+                        <th>{{ col }}</th>
+                        {% endfor %}
+                    </tr>
+                </thead>
+                <tbody>
+                    {% for stat in stats %}
+                    <tr>
+                        {% for value in stat.values() %}
+                        <td>{{ value }}</td>
+                        {% endfor %}
+                    </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+        </section>
+
+        <!-- Highs de jeu -->
+        <section class="data-section">
+            <h2>Performances</h2>
+            <table class="data-table">
+                <thead>
+                    <tr>
+                        {% for col in game_highs[0].keys() %}
+                        <th>{{ col }}</th>
+                        {% endfor %}
+                    </tr>
+                </thead>
+                <tbody>
+                    {% for high in game_highs %}
+                    <tr>
+                        {% for value in high.values() %}
+                        <td>{{ value }}</td>
+                        {% endfor %}
+                    </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+        </section>
+
+        <!-- Splits -->
+        <section class="data-section">
+            <h2>Splits</h2>
+            <table class="data-table">
+                <thead>
+                    <tr>
+                        {% for col in splits[0].keys() %}
+                        <th>{{ col }}</th>
+                        {% endfor %}
+                    </tr>
+                </thead>
+                <tbody>
+                    {% for split in splits %}
+                    <tr>
+                        {% for value in split.values() %}
+                        <td>{{ value }}</td>
+                        {% endfor %}
+                    </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+        </section>
+
+        <!-- Graphique Salaire -->
+        <section class="data-section">
+            <h2>Graphique des Salaires</h2>
+            <img src="{{ graphique_salaire }}" alt="Graphique des salaires" class="graph-image">
+        </section>
+
+        <!-- Résultats des parties -->
+        <section class="data-section">
+            <h2>Résultats des Parties</h2>
+            <img src="{{ resultats_parties }}" alt="Résultats des parties" class="result-image">
+        </section>
+    </div>
+</body>
+</html>

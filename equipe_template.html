@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{{ team_name }}</title>
+    <link rel="stylesheet" href="styleees.css">
+</head>
+<body>
+    <div class="container">
+        <!-- Disposition principale -->
+        <div class="main-layout">
+            <!-- Colonne gauche -->
+            <div class="left-column">
+				<!-- Logo -->
+				<div class="logo-section">
+					<img src="{{ logo }}" alt="Logo {{ team_name }}" class="team-logo">
+				</div>
+
+				<!-- Informations générales -->
+				<div class="info-section">
+					<h2>Informations de l'équipe</h2>
+					<table class="info-table">
+						{% for key, value in infos_equipe.items() %}
+						<tr>
+							<th>{{ key }}</th>
+							<td>{{ value }}</td>
+						</tr>
+						{% endfor %}
+					</table>
+				</div>
+
+				<!-- Salaires -->
+				<div class="salary-section">
+					<h2>Salaires</h2>
+					<table class="data-table">
+						<thead>
+							<tr>
+								{% for col in salaries[0].keys() %}
+								<th>{{ col }}</th>
+								{% endfor %}
+							</tr>
+						</thead>
+						<tbody>
+							{% for salary in salaries %}
+							<tr>
+								{% for value in salary.values() %}
+								<td>{{ value }}</td>
+								{% endfor %}
+							</tr>
+							{% endfor %}
+						</tbody>
+					</table>
+				</div>
+			</div>
+
+
+            <!-- Colonne droite -->
+            <div class="right-column">
+                <!-- Roster -->
+                <section class="data-section">
+                    <h2>Roster</h2>
+                    <table class="data-table">
+                        <thead>
+                            <tr>
+                                {% for col in roster[0].keys() %}
+                                <th>{{ col }}</th>
+                                {% endfor %}
+                            </tr>
+                        </thead>
+                        <tbody>
+                            {% for player in roster %}
+                            <tr>
+                                {% for value in player.values() %}
+                                <td>{{ value }}</td>
+                                {% endfor %}
+                            </tr>
+                            {% endfor %}
+                        </tbody>
+                    </table>
+                </section>
+
+                <!-- Statistiques -->
+                <section class="data-section">
+                    <h2>Statistiques</h2>
+                    <table class="data-table">
+                        <thead>
+                            <tr>
+                                {% for col in stats[0].keys() %}
+                                <th>{{ col }}</th>
+                                {% endfor %}
+                            </tr>
+                        </thead>
+                        <tbody>
+                            {% for stat in stats %}
+                            <tr>
+                                {% for value in stat.values() %}
+                                <td>{{ value }}</td>
+                                {% endfor %}
+                            </tr>
+                            {% endfor %}
+                        </tbody>
+                    </table>
+                </section>
+            </div>
+        </div>
+    </div>
+</body>
+</html>
